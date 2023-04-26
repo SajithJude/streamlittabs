@@ -23,10 +23,16 @@ if "current_state" not in st.session_state:
 op = hc.option_bar(option_definition=option_data, first_select=st.session_state.current_state, title='Feedback Response', key='PrimaryOption', override_theme=over_theme, horizontal_orientation=True)
 
 # check if the "Next" button has been clicked
-if st.button("Next"):
-    # update the current state of the option bar if it is less than 7
-    if st.session_state.current_state < 7:
-        st.session_state.current_state += 1
+tab1, tab2, tab3 = st.tabs(["", "", ""])
 
-# display the option bar component
-st.write(op)
+with tab1:
+   st.header("A cat")
+   st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
+
+with tab2:
+   st.header("A dog")
+   st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+
+with tab3:
+   st.header("An owl")
+   st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
