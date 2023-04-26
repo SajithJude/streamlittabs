@@ -22,9 +22,11 @@ if "current_state" not in st.session_state:
 # display a version version of the option bar
 op = hc.option_bar(option_definition=option_data, first_select=st.session_state.current_state, title='Feedback Response', key='PrimaryOption', override_theme=over_theme, horizontal_orientation=True)
 
+
+tab1,tab2,tab3,tab4,tab5,tab6,tab7 = st.tabs(["","","","","","",""])
 # display a tab for each option
 for option in option_data:
-    with st.tabs(f"{option['label']}"):
+    with tab+f"{option['label']}":
         st.header(f"You selected option {option['label']}")
         st.write(f"https://picsum.photos/200/300?random={option['label']}")
 
