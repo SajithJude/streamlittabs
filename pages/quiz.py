@@ -12,13 +12,10 @@ uploaded_file = st.file_uploader("Upload JSON file", type=["json"])
 
 if uploaded_file is not None:
     data = json.load(uploaded_file)
-
-    
     for d in data:
         if 'question' in d:
             questions.append(d['question'])
-        if 'Question' in d:
-            questions.append(d['Question'])
+        
 
 
 
@@ -86,9 +83,8 @@ else:
     )
 
 if st.session_state['generated']:
-
-    for i in range(len(st.session_state['generated'])+1, 1, 1):
-        message(st.session_state["generated"][i], key=str(i))
-        message(st.session_state['past'][i],
-            is_user=True, key=str(i) + '_user')
-        st.sidebar.write("Bot: ", st.session_state["generated"][i])
+for i in range(len(st.session_state['generated'])+1, 1, 1):
+    message(st.session_state["generated"][i], key=str(i))
+    message(st.session_state['past'][i],
+        is_user=True, key=str(i) + '_user')
+    st.sidebar.write("Bot: ", st.session_state["generated"][i])
