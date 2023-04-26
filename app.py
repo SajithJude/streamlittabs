@@ -11,7 +11,7 @@ tab3_image = st.image("https://static.streamlit.io/examples/owl.jpg", width=50)
 
 
 
-tabs = st.tab_container()
+tabs = st.container()
 
 with tabs:
     tab1 = st.tab(label=tab1_image)
