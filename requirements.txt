@@ -2,5 +2,4 @@ streamlit
 hydralit_components
 hydralit
 openai
-langchain
 streamlit-chat
