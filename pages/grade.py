@@ -14,16 +14,23 @@ if uploaded_file_1 is not None and uploaded_file_2 is not None:
 
     # Extract the answers from the first file
     student_answer = []
+    actual_answer = []
     for d in data_1:
-        if 'answers' in d:
-            student_answer.append(d['answers'])
+        if 'answer' in d:
+            actual_answer.append(d['answer'])
+        if 'Answer' in d:
+            actual_answer.append(d['Answer'])
+        if 'student_answer' in d:
+            student_answer.append(d['student_answer'])
+        if 'Student_Answer' in d:
+            student_answer.append(d['Student_Answer'])
 
     # Extract the answers from the second file
-    actual_answer = []
     for d in data_2:
-        if 'answers' in d:
-            actual_answer.append(d['answers'])
-
-    # Do something with the student_answer and actual_answer variables
-    st.write("Student answer:", student_answer)
-    st.write("Actual answer:", actual_answer)
+        if 'answer' in d:
+            actual_answer.append(d['answer'])
+        if 'Answer' in d:
+            actual_answer.append(d['Answer'])
+        if 'student_answer' in d:
+            student_answer.append(d['student_answer'])
+        if 'Student_Answer'
