@@ -20,5 +20,9 @@ over_theme = {'txc_inactive': 'white','menu_background':'#2953b3','txc_active':'
 # display a horizontal version of the option bar
 op = hc.option_bar(option_definition=option_data,title='Feedback Response',key='PrimaryOption',override_theme=over_theme,horizontal_orientation=True)
 
-# display a version version of the option bar
-# op2 = hc.option_bar(option_definition=option_data,title='Feedback Response',key='PrimaryOption',override_theme=over_theme,font_styling=font_fmt,horizontal_orientation=False)
+
+with op[0]:
+    st.write("option 0")
+
+with op[1]:
+    st.write("option 1")
