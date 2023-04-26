@@ -53,6 +53,13 @@ else:
             "answer": st.session_state['past'][i]
         }
         responses.append(response)
+    st.sidebar.download_button(
+        label="Download Responses",
+        data=json.dumps(responses),
+        file_name="responses.json",
+        mime="application/json"
+    )
+
 
     # Do something with the responses, e.g. save to file
     st.write(responses)
@@ -66,13 +73,7 @@ else:
     st.session_state['past'] = []
     st.session_state['generated'] = []
 
-    st.sidebar.download_button(
-        label="Download Responses",
-        data=json.dumps(responses),
-        file_name="responses.json",
-        mime="application/json"
-    )
-
+    
 if st.session_state['generated']:
     for i in range(len(st.session_state['generated'])):
         message(st.session_state["generated"][i], key=str(i))
