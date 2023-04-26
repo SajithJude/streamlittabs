@@ -23,4 +23,4 @@ if st.button("Next"):
     # update the current state of the option bar
     current_state += 1
     # display a horizontal version of the option bar with the updated state
-    op = hc.option_bar(option_definition=option_data[current_state:],title='Feedback Response',key='PrimaryOption',override_theme=over_theme,horizontal_orientation=True)
+    op = hc.option_bar(option_definition=option_data[current_state:],title='Feedback Response',key=str(current_state),override_theme=over_theme,horizontal_orientation=True)
