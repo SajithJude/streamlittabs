@@ -6,6 +6,9 @@ option_data = [
    {'icon': "bi bi-hand-thumbs-up", 'label':"1"},
    {'icon':"fa fa-question-circle",'label':"2"},
    {'icon': "bi bi-hand-thumbs-down", 'label':"3"},
+   {'icon': "bi bi-hand-thumbs-up", 'label':"4"},
+   {'icon':"fa fa-question-circle",'label':"5"},
+   {'icon': "bi bi-hand-thumbs-down", 'label':"6"},
 ]
 
 # override the theme, else it will use the Streamlit applied theme
