@@ -12,13 +12,15 @@ option_data = [
 over_theme = {'txc_inactive': 'white','menu_background':'purple','txc_active':'yellow','option_active':'blue'}
 
 # set the current state of the option bar
-current_state = 0
+# current_state = 0
 
+if current_state not in st.session_state:
+    st.session_state.current_state = 0
 # display a version version of the option bar
-op = hc.option_bar(option_definition=option_data,first_select=current_state,title='Feedback Response',key='PrimaryOption',override_theme=over_theme,horizontal_orientation=True)
+op = hc.option_bar(option_definition=option_data,first_select=st.session_state.current_state,title='Feedback Response',key='PrimaryOption',override_theme=over_theme,horizontal_orientation=True)
 
 # check if the "Next" button has been clicked
 if st.button("Next"):
     # update the current state of the option bar
-    current_state += 1
+    st.session_state.current_state += 1
     
