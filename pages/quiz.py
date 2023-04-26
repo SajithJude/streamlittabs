@@ -6,15 +6,6 @@ from pathlib import Path
 
 
 
-if 'generated' not in st.session_state:
-    st.session_state['generated'] = []
-
-if 'past' not in st.session_state:
-    st.session_state['past'] = []
-
-if 'current_question' not in st.session_state:
-    st.session_state['current_question'] = 0
-
 
 questions = []
 uploaded_file = st.file_uploader("Upload JSON file", type=["json"])
@@ -28,6 +19,18 @@ if uploaded_file is not None:
             questions.append(d['question'])
         if 'Question' in d:
             questions.append(d['Question'])
+
+
+
+if 'generated' not in st.session_state:
+    st.session_state['generated'] = []
+
+if 'past' not in st.session_state:
+    st.session_state['past'] = []
+
+if 'current_question' not in st.session_state:
+    st.session_state['current_question'] = 0
+
 
 
 if st.session_state['current_question'] < len(questions):
