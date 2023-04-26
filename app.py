@@ -24,9 +24,9 @@ op = hc.option_bar(option_definition=option_data,title='Feedback Response',key='
 current_option_index = st.session_state.get("current_option_index", 0)
 
 if st.button("Next"):
-    current_option_index = (current_option_index + 1) % len(options)
+    current_option_index = (current_option_index + 1) % len(option_data)
     st.session_state.current_option_index = current_option_index
-    op = option_bar(options, first_select=current_option_index)
+    op = option_bar(option_data, first_select=current_option_index)
 
 
 
