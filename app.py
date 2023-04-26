@@ -20,6 +20,16 @@ over_theme = {'txc_inactive': 'white','menu_background':'#2953b3','txc_active':'
 # display a horizontal version of the option bar
 op = hc.option_bar(option_definition=option_data,title='Feedback Response',key='PrimaryOption',override_theme=over_theme,horizontal_orientation=True)
 
+
+current_option_index = st.session_state.get("current_option_index", 0)
+
+if st.button("Next"):
+    current_option_index = (current_option_index + 1) % len(options)
+    st.session_state.current_option_index = current_option_index
+    op = option_bar(options, first_select=current_option_index)
+
+
+
 if op == "1":
     st.write("hello 1")
 elif op == "2":
