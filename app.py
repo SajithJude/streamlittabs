@@ -24,7 +24,7 @@ op = hc.option_bar(option_definition=option_data, first_select=st.session_state.
 
 # display a tab for each option
 for option in option_data:
-    with st.tab(label=option['label']):
+    with st.tabs(f"{option['label']}"):
         st.header(f"You selected option {option['label']}")
         st.write(f"https://picsum.photos/200/300?random={option['label']}")
 
