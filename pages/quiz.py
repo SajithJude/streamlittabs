@@ -16,6 +16,20 @@ if 'current_question' not in st.session_state:
     st.session_state['current_question'] = 0
 
 
+questions = []
+uploaded_file = st.file_uploader("Upload JSON file", type=["json"])
+
+if uploaded_file is not None:
+    data = json.load(uploaded_file)
+
+    
+    for d in data:
+        if 'question' in d:
+            questions.append(d['question'])
+        if 'Question' in d:
+            questions.append(d['Question'])
+
+
 if st.session_state['current_question'] < len(questions):
     current_question = questions[st.session_state['current_question']]
     message(current_question['question'], is_user=False, key=str(
