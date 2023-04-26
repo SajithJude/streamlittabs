@@ -20,4 +20,17 @@ over_theme = {'txc_inactive': 'white','menu_background':'#2953b3','txc_active':'
 # display a horizontal version of the option bar
 op = hc.option_bar(option_definition=option_data,title='Feedback Response',key='PrimaryOption',override_theme=over_theme,horizontal_orientation=True)
 
-st.write(op)
+if op == "1":
+    st.write("hello 1")
+elif op == "2":
+    st.write("hello 2")
+elif op == "3":
+    st.write("hello 3")
+elif op == "4":
+    st.write("hello 4")
+elif op == "5":
+    st.write("hello 5")
+elif op == "6":
+    st.write("hello 6")
+elif op == "7":
+    st.write("hello 7")
