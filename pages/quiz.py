@@ -23,8 +23,8 @@ if uploaded_file is not None:
     for d in data:
         if 'question' in d:
             questions.append(d['question'])
-        # if 'Question' in d:
-        #     questions.append(d['Question'])
+        if 'Question' in d:
+            questions.append(d['Question'])
 
 if st.session_state['current_question'] < len(questions):
     current_question = questions[st.session_state['current_question']]
