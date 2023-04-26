@@ -3,12 +3,12 @@ import hydralit_components as hc
 
 # define what option labels and icons to display
 option_data = [
-   {'icon': "bi bi-hand-thumbs-up", 'label':"1"},
-   {'icon':"fa fa-question-circle",'label':"2"},
-   {'icon': "bi bi-hand-thumbs-down", 'label':"3"},
-   {'icon': "bi bi-hand-thumbs-up", 'label':"4"},
-   {'icon':"fa fa-question-circle",'label':"5"},
-   {'icon': "bi bi-hand-thumbs-down", 'label':"6"},
+   { 'label':"1"},
+   {'label':"2"},
+   { 'label':"3"},
+   { 'label':"4"},
+   {'label':"5"},
+   { 'label':"6"},
 ]
 
 # override the theme, else it will use the Streamlit applied theme
