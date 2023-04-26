@@ -14,7 +14,7 @@ over_theme = {'txc_inactive': 'white','menu_background':'purple','txc_active':'y
 # set the current state of the option bar
 # current_state = 0
 
-if current_state not in st.session_state:
+if "current_state" not in st.session_state:
     st.session_state.current_state = 0
 # display a version version of the option bar
 op = hc.option_bar(option_definition=option_data,first_select=st.session_state.current_state,title='Feedback Response',key='PrimaryOption',override_theme=over_theme,horizontal_orientation=True)
