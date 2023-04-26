@@ -5,20 +5,6 @@ from typing import List
 from pathlib import Path
 
 
-
-
-questions = []
-uploaded_file = st.file_uploader("Upload JSON file", type=["json"])
-
-if uploaded_file is not None:
-    data = json.load(uploaded_file)
-    for d in data:
-        if 'question' in d:
-            questions.append(d['question'])
-        
-
-
-
 if 'generated' not in st.session_state:
     st.session_state['generated'] = []
 
@@ -29,11 +15,20 @@ if 'current_question' not in st.session_state:
     st.session_state['current_question'] = 0
 
 
+questions = []
+uploaded_file = st.file_uploader("Upload JSON file", type=["json"])
 
-if st.session_state['current_question'] <= len(questions):
+if uploaded_file is not None:
+    data = json.load(uploaded_file)
+    for d in data:
+        if 'question' in d:
+            questions.append(d['question'])
+        if 'Question' in d:
+            questions.append(d['Question'])
+
+if st.session_state['current_question'] < len(questions):
     current_question = questions[st.session_state['current_question']]
-    message(current_question['question'], is_user=False, key=str(
-        st.session_state['current_question']))
+    message(current_question, is_user=False, key=str(st.session_state['current_question']))
 
     with st.form(key="input_form"):
         user_input = st.text_input("You: ", "", key="input")
@@ -47,34 +42,30 @@ if st.session_state['current_question'] <= len(questions):
     st.sidebar.header("Conversation History")
     for i, question in enumerate(questions):
         if i < st.session_state['current_question']:
-            st.sidebar.write("Bot: "+question['question'])
-            st.sidebar.write(
-                "You: " + st.session_state['past'][i])
+            st.sidebar.write("Bot: " + question)
+            st.sidebar.write("You: " + st.session_state['past'][i])
 
 else:
     responses = []
     for i, question in enumerate(questions):
         response = {
-            "question": question['question'],
+            "question": question,
             "answer": st.session_state['past'][i]
         }
         responses.append(response)
 
-    user.assignments[st.session_state['pos']] = {
-        "topic": st.session_state['selected_topic'], "responses": responses}
-    save_users(users)
+    # Do something with the responses, e.g. save to file
+    st.write(responses)
 
     message("Thank you for answering all the questions. Your responses have been saved.",
             is_user=False, key=str(st.session_state['selected_topic']))
-    st.sidebar.write(
-        "Thank you for answering all the questions. Your responses have been saved.")
+    st.sidebar.write("Thank you for answering all the questions. Your responses have been saved.")
     st.session_state['current_question'] = 0
     st.session_state['selected_topic'] = ""
     st.session_state['pos'] = None
     st.session_state['past'] = []
     st.session_state['generated'] = []
 
-    # st.stop()
     st.sidebar.download_button(
         label="Download Responses",
         data=json.dumps(responses),
@@ -83,8 +74,8 @@ else:
     )
 
 if st.session_state['generated']:
-    for i in range(len(st.session_state['generated'])+1, 1, 1):
+    for i in range(len(st.session_state['generated'])):
         message(st.session_state["generated"][i], key=str(i))
         message(st.session_state['past'][i],
-            is_user=True, key=str(i) + '_user')
-        st.sidebar.write("Bot: ", st.session_state["generated"][i])
+                is_user=True, key=str(i) + '_user')
+        st.sidebar.write("Bot: " + st.session_state["generated"][i])
