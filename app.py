@@ -9,10 +9,12 @@ option_data = [
    { 'label':"4"},
    {'label':"5"},
    { 'label':"6"},
+   { 'label':"7"}
+
 ]
 
 # override the theme, else it will use the Streamlit applied theme
-over_theme = {'txc_inactive': 'white','menu_background':'purple','txc_active':'yellow','option_active':'blue'}
+over_theme = {'txc_inactive': 'white','menu_background':'#edf4fc','txc_active':'#2953b3','option_active':'white'}
 # font_fmt = {'font-class':'h2','font-size':'150%'}
 
 # display a horizontal version of the option bar
